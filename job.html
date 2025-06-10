@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bank Job Application</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.9)), url('C:\Users\sony\OneDrive\Desktop\kaushal bank\bank1.jpg') center/cover no-repeat;
+      color: #fff;
+      overflow-x: hidden;
+    }
+  
+    .form-container {
+      max-width: 800px; margin: 50px auto; padding: 30px;padding: 20px; background: rgba(0,0,0,0.8); border-radius: 10px; box-shadow: 0 0 20px rgba(0,240,255,0.2);
+    }
+    h2 { text-align: center; margin-bottom: 30px; color: #00f0ff; }
+    .form-group {
+      position: relative; margin-bottom: 20px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 1rem 1rem 0.5rem; background: #111; color: #fff; border: 1px solid #333;
+      border-radius: 5px; outline: none; transition: border 0.3s;
+    }
+    .form-group label {
+      position: absolute; top: 1rem; left: 1rem; color: #888; pointer-events: none;
+      transition: 0.3s ease; background-color: #111; padding: 0 5px;
+    }
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label,
+    .form-group select:focus + label,
+    .form-group textarea:focus + label {
+      top: -0.7rem; font-size: 0.8rem; color: #00f0ff;
+    }
+    .b1 {
+      width: 100%; background: linear-gradient(45deg, #00f0ff, #0066ff); border: none; padding: 1rem;
+      font-size: 1.1rem; color: white; border-radius: 50px; cursor: pointer;
+      transition: background 0.4s, transform 0.2s;
+    }
+    .b1:hover {
+      background: linear-gradient(45deg, #0066ff, #00f0ff);
+      transform: translateY(-3px);
+    }
+    .message { text-align: center; margin-top: 20px; color: #00ffcc; }
+    /*footer*/
+    .custom-footer {
+  background: rgba(0, 0, 0, 0.6);
+  color: #ccc;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 3rem;
+}
+
+.custom-footer .footer-left {
+  margin-bottom: 0.5rem;
+}
+
+.custom-footer .footer-right a {
+  color: #ccc;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  transition: color 0.3s, transform 0.3s;
+  font-size: 1rem;
+}
+
+.custom-footer .footer-right a:hover {
+  color: #00d4ff;
+  transform: translateY(-2px);
+}
+
+.custom-footer .footer-right i {
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+/**/
+
+    header {
+      background: #1a1d24;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 24px;
+      color: #00e6e6;
+      font-weight: bold;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #00e6e6;
+      left: 0;
+      bottom: -4px;
+      transition: 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    .file-query-btn {
+      background: #00e6e6;
+      color: #000;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .file-query-btn:hover {
+      background: #00cccc;
+    }
+    .menu-toggle {
+      display: none;
+      font-size: 22px;
+      cursor: pointer;
+    }
+@media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #1a1d24;
+        position: absolute;
+        top: 60px;
+        right: 5%;
+        width: 200px;
+        padding: 10px;
+      }
+      nav.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"> Kaushal Bank</div>
+    <nav id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="#">Services</a>
+      <a href="job.html">About</a>
+      <a href="#">Careers</a>
+      <a href="#">Contact</a>
+    </nav>
+    <i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
+    <a href="https://field-executives.github.io/BankSupport/"><button class="file-query-btn">File a Query</button></a>
+  </header>
+
+  <div class="form-container">
+    <h2>Bank Job Application Form</h2>
+    <form id="jobForm">
+      <div class="form-group">
+        <input type="text" name="fullName" placeholder=" " required>
+        <label>Full Name</label>
+      </div>
+      <div class="form-group">
+        <select name="gender" required>
+          <option value="" disabled selected hidden></option>
+          <option>Male</option><option>Female</option><option>Other</option>
+        </select>
+        <label>Gender</label>
+      </div>
+      <div class="form-group">
+        <input type="date" name="dob" required>
+        <label>Date of Birth</label>
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder=" " required>
+        <label>Email ID</label>
+      </div>
+      <div class="form-group">
+        <input type="tel" name="mobile" pattern="\+91[0-9]{10}" placeholder="+91XXXXXXXXXX" required>
+        <label>Mobile Number</label>
+      </div>
+      <div class="form-group">
+        <input type="text" name="state" placeholder=" " required>
+        <label>State</label>
+      </div>
+      <div class="form-group">
+        <input type="text" name="city" placeholder=" " required>
+        <label>City</label>
+      </div>
+      <div class="form-group">
+        <select name="position" required>
+          <option value="" disabled selected hidden></option>
+          <option>Account Officer</option>
+          <option>Manager</option>
+          <option>Loan Officer</option>
+          <option>Customer Support</option>
+          <option>KYC officer</option>
+          <option>Cashier</option>
+        </select>
+        <label>Position Applied For</label>
+      </div>
+      <div class="form-group">
+        <input type="text" name="qualification" placeholder=" " required>
+        <label>Qualification</label>
+      </div>
+      <div class="form-group">
+        <textarea name="reason" rows="4" placeholder=" " required></textarea>
+        <label>Reason to be Hired</label>
+      </div>
+      <button class="b1" type="submit">Submit Application</button>
+      <div class="message" id="message"></div>
+    </form>
+  </div>
+
+  <footer class="custom-footer">
+  <div class="footer-left">
+    © 2025 Kaushal Bank. All rights reserved.
+  </div>
+  <div class="footer-right">
+    <a href="contact.html">Contact Us</a>
+    <a href="https://field-executives.github.io/BankSupport/">File a Query</a>
+    <a href="instagram" target="_blank" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+</footer>
+
+
+  <script>
+    const navLinks = document.getElementById('navLinks');
+    function toggleMenu() {
+      navLinks.classList.toggle('active');
+    }
+
+    const form = document.getElementById('jobForm');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      fetch('https://script.google.com/macros/s/AKfycbxTB9zdINkZx2MlehVteSBgpJJkOrlgBvfve2hjDsIZeb3blYFTjJZIap6YWxv5Onga/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(res => {
+        if (res.status === 'success') {
+          document.getElementById('message').textContent = 'Your application has been submitted successfully!';
+          form.reset();
+        } else throw new Error();
+      })
+      .catch(() => {
+        document.getElementById('message').textContent = 'Submission failed. Please try again later.';
+      });
+    });
+  </script>
+</body>
+</html>
